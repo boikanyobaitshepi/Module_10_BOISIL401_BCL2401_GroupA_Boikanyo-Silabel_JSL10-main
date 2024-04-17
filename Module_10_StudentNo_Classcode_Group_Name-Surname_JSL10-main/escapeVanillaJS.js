@@ -15,43 +15,49 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("solveRoom2").addEventListener("click", () => {
         //Create a set of Javascript concepts
         const jsConcepts = new Set(['closure', 'scope', 'hoisting', 'async']);
-        // 🪲 Bug: What's mssing from JS concepts?
+        // Create a set of React concepts
         const reactConcepts = new Set(['components', 'jsx', 'hooks', 'async']);
-        // 🪲 Bug: Incorrect function call
+        // find the intersection of the two sets
         const commonConcepts = findIntersection(jsConcepts, reactConcepts);
         document.getElementById("room2Result").textContent = `The code to unlock the door is: ${Array.from(commonConcepts).join(', ')}`;
     });
 
-    // 🪲 Bug: Asynchronous function ?
+    // Attach the event listener to the "solveroom3" button
     document.getElementById("solveRoom3").addEventListener("click", () => {
+        //fetch data from the "directions.json" file
         fetch('directions.json') 
             .then(response => response.json())
             .then(directions => {
+                //navigate the labyrinth
                 return navigateLabyrinth(directions);
             })
                     .then(message => {
-                        // 🪲 Bug: Incorrect method
+                        // Display the congratulatory message
                         document.getElementById("room3Result").textContent = message;
                     });
             });
     });
-
+// find the most recent book
 function findMostRecentBook(books) {
-    // 🪲 Bug: Logic error
+    // Return the most recent published date
     return books.reduce((mostRecent, book) => (new Date(book.published) > new Date(mostRecent.published)) ? book : mostRecent);
 }
-
+// find the intersection of two sets
 function findIntersection(setA, setB) {
-    // 🪲 Bug: Incorrect logic
+    // Return a new set containing the intersection of setA and setB
     const intersection = new Set([...setA].filter(item => setB.has(item)));
     return intersection;
 }
 
+// Navigate the labyrinth
 async function navigateLabyrinth(directions) {
+    //iterate over each direction in the directions array
     for (let direction of directions) {
-        // 🪲 Bug: No delay
+        // Wait for 1 second before moving to the next step
+ 
        await new Promise(resolve => setTimeout(resolve, 1000));
         console.log(`Navigating: ${direction.step}`);
     }
+    //Return the congratulatory message
     return "Congratulations! You've mastered the essentials of Vanilla JavaScript. Welcome to the world of React, where you'll build powerful and dynamic web applications. Let's dive in!";
 }
