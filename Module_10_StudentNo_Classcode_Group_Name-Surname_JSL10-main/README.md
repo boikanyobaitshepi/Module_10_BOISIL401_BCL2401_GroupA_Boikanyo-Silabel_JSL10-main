@@ -1,0 +1,5 @@
+In the event listener for the "solveRoom" element, the ID used to attach the event listener is incorrect. It should be document.getElementById("solveRoom") instead of document.querySelector("#solveRoom").
+In the fetch request for the "solveRoom" event listener, the response from the fetch call is not being converted to JSON format before being passed to the next .then block. It should be response.json() instead of response.text().
+In the function findMostRecentBook(books), the comparison logic to find the most recent book is incorrect. It should be new Date(book.published) > new Date(mostRecent.published) instead of book.published > mostRecent.published.
+In the event listener for the "solveRoom2" element, the function call to find the intersection of JavaScript and React concepts is incorrect. It should be findIntersection(jsConcepts, reactConcepts) instead of findIntersection(jsConcepts, jsConcepts).
+In the event listener for the "solveRoom3" element, the function navigateLabyrinth(directions) is declared as an asynchronous function, but it is not being awaited when called. It should be await navigateLabyrinth(directions) instead of
